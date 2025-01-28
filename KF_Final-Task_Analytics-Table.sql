@@ -13,8 +13,8 @@ SELECT
     WHEN p.price > 300000 AND p.price <= 500000 THEN 0.25
     ELSE 0.30
   END AS persentase_gross_laba,
-  (p.price * (1 - (t.discount_percentage / 100))) AS nett_sales,
-  (p.price * (1 - (t.discount_percentage / 100))) * 
+  p.price * (1 - t.discount_percentage) AS nett_sales,
+  p.price * (1 - t.discount_percentage) * 
     CASE
     WHEN p.price <= 50000 THEN 0.1
     WHEN p.price > 50000 AND p.price <= 100000 THEN 0.15
